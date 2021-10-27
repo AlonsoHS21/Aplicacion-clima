@@ -1,0 +1,20 @@
+//Guardamos la API KEY de OpenWeather en una constante
+const API_KEY = 'b2885e62e8e55a917a5e9b82390c87cb';
+
+//Esta funcion getWeatherData va a recibir los datos sobre la posicion del usuario
+const getWeatherData = position => {
+    //Dentro del objeto coords copiamos el contenido que tengan como clave el mismo nombre a las variables llamadas latitude y longitude
+    const { latitude , longitude } = position.coords;
+
+    //fetch() nos permite obtener recursos de forma asincronica por la red, en este caso lo estoy usando para llamar a la API de OpenWeather
+    fetch('http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}')
+    .then(response => response.json()) //Lo que hacemos es extraer la respuesta en formato JSON
+    .then(data => console.log(data)) //Mostramos los datos ya en formato JSON recibidos del anterior then
+   
+    //Mostramos la posicion para saber lo que se obtiene
+    console.log(position); 
+}
+// Es funcion sirve para obtener la ubicacion del usuario
+const onLoad = () => {
+    navigator.geolocation.getCurrentPosition(getWeatherData);
+}
