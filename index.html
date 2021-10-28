@@ -8,14 +8,23 @@
     <title>App clima - Alonso Huarcaya </title>
     <!--CSS-->
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome 6 CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
 </head>
 
  <!-- El evento onload se usa para ejecutar un script una vez que la pagina se haya cargado completamente -->
 <body onload="onLoad()">
-    
-    <div id="container">
-        
-    </div>
+   <div class="box">
+        <!-- Divs con id donde va a ir la informacion traida desde la API de OpenWeather -->
+        <div id="location"></div>
+        <div id="description"></div>
+        <div id="humidity"></div>
+        <div id="pressure"></div>
+        <div id="temperature"></div>
+        <div id="date"></div>
+        <div></div>
+    </div> 
 
     <!--JS-->
     <script src="main.js"></script>

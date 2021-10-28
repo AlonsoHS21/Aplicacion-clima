@@ -12,8 +12,30 @@ const getWeatherData = position => {
    
     const setWeatherData = data => {
          //Mostramos la data para saber lo que se obtiene
-        console.log(data); 
+        console.log(data);
+        //Creamos una variable donde vamos a guardar toda la informacion que necesito desde la API 
+        const weatherData = {
+            location: data.name,
+            description: data.weather[0].main,
+            humidity: data.main.humidity,
+            pressure: data.main.pressure,
+            temperature: data.main.temp,
+            date: getDate(),
+        }
+
+        Object.keys(weatherData).forEach(key => {
+            document.getElementById(key).textContent = weatherData[key];   
+        });
+
     }
+
+//Funcion para devolver el dia - mes - año
+const getDate = () => {
+     let date = new Date();
+     //El método toLocaleDateString() devuelve la fecha en un formato sensible a la localización, 
+     //adaptándose así al idioma y formato del lugar donde te encuentres
+     return date.toLocaleDateString();
+}
    
 }
 // Es funcion sirve para obtener la ubicacion del usuario
