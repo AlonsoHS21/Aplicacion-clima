@@ -18,14 +18,18 @@ const getWeatherData = position => {
             location: data.name,
             description: data.weather[0].main,
             humidity: data.main.humidity,
-            pressure: data.main.pressure,
+            feels_like: data.main.feels_like,
             temperature: data.main.temp,
+            temperature_max: data.main.temp_max,
+            temperature_min: data.main.temp_min,
             date: getDate(),
         }
 
         Object.keys(weatherData).forEach(key => {
             document.getElementById(key).textContent = weatherData[key];   
         });
+
+        console.log(weatherData);
 
     }
 
@@ -38,7 +42,7 @@ const getDate = () => {
 }
    
 }
-// Es funcion sirve para obtener la ubicacion del usuario
+// Esta funcion sirve para obtener la ubicacion del usuario
 const onLoad = () => {
     navigator.geolocation.getCurrentPosition(getWeatherData);
 }
